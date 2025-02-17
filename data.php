@@ -15,6 +15,8 @@ public $active;
 public $dated;
 public $username;
 public $password;
+public $counties;
+public $cities;
 public $result;
 
 
@@ -26,7 +28,7 @@ $this->db = $db;
 
 // GET ALL
 public function getData(){
-$sqlQuery = "SELECT userId, id, title, body, images, active, dated, username, password FROM " . $this->db_table;
+$sqlQuery = "SELECT userId, id, title, body, images, active, dated, username, password, counties, cities FROM " . $this->db_table;
 $this->result = $this->db->query($sqlQuery);
 return $this->result;
 }
@@ -43,6 +45,8 @@ $this->active=htmlspecialchars(strip_tags($this->active));
 $this->dated=htmlspecialchars(strip_tags($this->dated));
 $this->username=htmlspecialchars(strip_tags($this->username));
 $this->password=htmlspecialchars(strip_tags($this->password));
+$this->counties=htmlspecialchars(strip_tags($this->counties));
+$this->cities=htmlspecialchars(strip_tags($this->cities));
 
 echo $this->userId;
 echo $this->id;
@@ -53,6 +57,8 @@ echo $this->active;
 echo $this->dated;
 echo $this->username;
 echo $this->password;
+echo $this->counties;
+echo $this->cities;
 
 $sqlQuery = "INSERT INTO
 ". $this->db_table ." SET userId = '".$this->userId."',
@@ -62,7 +68,9 @@ body = '".$this->body."',
 images = '".$this->images."',
 active = '".$this->active."',
 dated = '".$this->dated."',
-username = '".$this->username."'
+username = '".$this->username."',
+counties = '".$this->counties."',
+cities = '".$this->cities."',
 password = '".$this->password."'
 
 ";
@@ -77,7 +85,7 @@ return false;
 
 // UPDATE
 public function getSingleData(){
-$sqlQuery = "SELECT userId, id, title, body, images, active, dated, username, password FROM " .
+$sqlQuery = "SELECT userId, id, title, body, images, active, dated, username, password, counties, cities  FROM " .
  $this->db_table . " WHERE userId = '" . $this->userId . "'";
 
 // echo $sqlQuery;
@@ -92,6 +100,8 @@ $this->active = $dataRow['active'];
 $this->dated = $dataRow['dated'];
 $this->username = $dataRow['username'];
 $this->password = $dataRow['password'];
+$this->counties = $dataRow['counties'];
+$this->cities = $dataRow['cities'];
 }
 
 // UPDATE
@@ -105,6 +115,8 @@ $this->active=htmlspecialchars(strip_tags($this->active));
 $this->dated=htmlspecialchars(strip_tags($this->dated));
 $this->username=htmlspecialchars(strip_tags($this->username));
 $this->password=htmlspecialchars(strip_tags($this->password));
+$this->counties=htmlspecialchars(strip_tags($this->counties));
+$this->cities=htmlspecialchars(strip_tags($this->cities));
 
 $sqlQuery = "UPDATE ". $this->db_table .
 "SET title = '".$this->title."',
@@ -114,7 +126,9 @@ images = '".$this->images."',
 active = '".$this->active."',
 dated = '".$this->dated."',
 username = '".$this->username."',
-password = '".$this->password."'
+password = '".$this->password."',
+counties = '".$this->counties."',
+cities = '".$this->cities."'
 WHERE userId = '" . $this->userId . "'";
 
 

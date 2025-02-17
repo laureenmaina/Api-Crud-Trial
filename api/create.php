@@ -26,13 +26,13 @@ echo $data['active'];
 echo $data['dated'];
 echo $data['username'];
 echo $data['password'];
-// echo $data['county'];
-// echo $data['cities'];
+echo $data['counties'];
+echo $data['cities'];
 
 
 // Check if decoding was successful
 if (isset($data['userId'],$data['id'], $data['title'],
- $data['body'],$data['images'],$data['active'],$data['dated'],$data['username'],$data['password'])) {
+ $data['body'],$data['images'],$data['active'],$data['dated'],$data['username'],$data['password'],$data['counties'],$data['cities'])) {
     // Access the JSON data
     $item->userId = $data['userId'];
     $item->id = $data['id'];
@@ -43,6 +43,8 @@ if (isset($data['userId'],$data['id'], $data['title'],
     $item->dated = $data['dated'];
     $item->username = $data['username'];
     $item->password = $data['password'];
+    $item->counties = $data['counties'];
+    $item->cities = $data['cities'];
 
     if ($item->createData()) {
         echo json_encode(["message" => "Post created successfully."]);
